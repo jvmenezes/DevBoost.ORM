@@ -12670,11 +12670,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jonathanm\\Desktop\\DevBoost.ORM\\DevBoost.ORM\\DevBoost.ORM.csproj",
+      "projectUniqueName": "C:\\Users\\jonathanm\\Desktop\\ITAU\\DevBoost.ORM\\DevBoost.ORM\\DevBoost.ORM.csproj",
       "projectName": "DevBoost.ORM",
-      "projectPath": "C:\\Users\\jonathanm\\Desktop\\DevBoost.ORM\\DevBoost.ORM\\DevBoost.ORM.csproj",
+      "projectPath": "C:\\Users\\jonathanm\\Desktop\\ITAU\\DevBoost.ORM\\DevBoost.ORM\\DevBoost.ORM.csproj",
       "packagesPath": "C:\\Users\\jonathanm\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jonathanm\\Desktop\\DevBoost.ORM\\DevBoost.ORM\\obj\\",
+      "outputPath": "C:\\Users\\jonathanm\\Desktop\\ITAU\\DevBoost.ORM\\DevBoost.ORM\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

@@ -13,31 +13,24 @@ namespace DevBoost.ORM.DAO {
 	  _configuracoes = config;
 	}
 
-	public List<Jogador> ObterUm(string codIndicador) {
+	public IEnumerable<Jogador> ObterTodos() {
 	  using (SqlConnection conexao = new SqlConnection(
-		  _configuracoes.GetConnectionString("BaseIndicadores"))) {
-		return conexao.GetAll<Jogador>().AsList();
-	  }
-	}
-
-	public Jogador ObterUmQueryDynamic(string codIndicador) {
-	  using (SqlConnection conexao = new SqlConnection(
-		  _configuracoes.GetConnectionString("BaseIndicadores"))) {
-		return conexao.QueryFirstOrDefault<Jogador>(
-			"SELECT Sigla, NomeIndicador, UltimaAtualizacao, Valor " +
-			"FROM dbo.Jogadores " +
-			"WHERE Sigla = @CodIndicador ",
-			new { CodIndicador = codIndicador }
+		  _configuracoes.GetConnectionString("Futebol"))) {
+		return conexao.Query<Jogador, Posicao, Clube, Jogador>(			
+			"SELECT * " +
+			"FROM Dbo.Jogador J " +
+			"INNER JOIN Dbo.Posicao P ON J.IDPosicao = P.IDPosicao " +
+			"INNER JOIN Dbo.Clube C ON J.IDClube = C.IDClube ",
+			  map: (jogador, posicao, clube) => {
+				jogador.Posicao = posicao;
+				jogador.Clube = clube;
+				;				
+				return jogador;
+			  },
+						  splitOn: "CPF,IDPosicao, IDClube"
 		);
 	  }
 	}
-
-	public List<Jogador> ObterTodos() {
-	  using (SqlConnection conexao = new SqlConnection(
-		  _configuracoes.GetConnectionString("Futebol"))) {
-		var list = conexao.GetAll<Jogador>();
-		return list.AsList();
-	  }
-	}
+	
   }
 }

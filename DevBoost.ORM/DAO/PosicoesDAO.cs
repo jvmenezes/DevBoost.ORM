@@ -13,28 +13,9 @@ namespace DevBoost.ORM.DAO {
 	  _configuracoes = config;
 	}
 
-	public List<Posicao> ObterUm(string codIndicador) {
-	  using (SqlConnection conexao = new SqlConnection(
-		  _configuracoes.GetConnectionString("BaseIndicadores"))) {
-		return conexao.GetAll<Posicao>().AsList();
-	  }
-	}
-
-	public Posicao ObterUmQueryDynamic(string codIndicador) {
-	  using (SqlConnection conexao = new SqlConnection(
-		  _configuracoes.GetConnectionString("BaseIndicadores"))) {
-		return conexao.QueryFirstOrDefault<Posicao>(
-			"SELECT Sigla, NomeIndicador, UltimaAtualizacao, Valor " +
-			"FROM dbo.Indicadores " +
-			"WHERE Sigla = @CodIndicador ",
-			new { CodIndicador = codIndicador }
-		);
-	  }
-	}
-
 	public List<Posicao> ObterTodos() {
 	  using (SqlConnection conexao = new SqlConnection(
-		  _configuracoes.GetConnectionString("BaseIndicadores"))) {
+		  _configuracoes.GetConnectionString("Futebol"))) {
 		var list = conexao.GetAll<Posicao>();
 		return list.AsList();
 	  }

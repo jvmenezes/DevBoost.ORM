@@ -12,7 +12,8 @@ namespace DevBoost.ORM.Models {
 	[ExplicitKey]
 	public string CPF { get; set; }
 	public string Nome { get; set; }
-	public string Posicao { get; set; }
-	public string Clube { get; set; }
+
+	public Posicao Posicao { get; set; }
+	public Clube Clube { get; set; }	
   }
 }
