@@ -1,0 +1,52 @@
+CREATE DATABASE Futebol;
+GO
+
+USE Futebol;
+GO
+
+
+CREATE TABLE dbo.Posicao(
+	IDPosicao int NOT NULL,
+	Descricao varchar(50) NOT NULL	
+	CONSTRAINT PK_Posicao PRIMARY KEY (IDPosicao)
+)
+GO
+
+CREATE TABLE dbo.Clube(
+	IDClube int NOT NULL,
+	Nome varchar(50) NOT NULL,
+	Divisao varchar(50) NOT NULL
+	CONSTRAINT PK_Clube PRIMARY KEY (IDClube)
+)
+GO
+
+CREATE TABLE dbo.Jogador(
+	CPF varchar(11) NOT NULL,
+	Nome varchar(60) NOT NULL,
+	IDPosicao int NOT NULL,
+	IDClube int NOT NULL
+	CONSTRAINT PK_Jogador PRIMARY KEY (CPF),
+	FOREIGN KEY (IDPosicao) REFERENCES Posicao(IDPosicao),
+	FOREIGN KEY (IDClube) REFERENCES Clube(IDClube)
+)
+GO
+
+insert into posicao(IDPosicao, Descricao)
+values(1, 'Atacante')
+insert into posicao(IDPosicao, Descricao)
+values(2, 'Meio Campo')
+insert into posicao(IDPosicao, Descricao)
+values(3, 'Zagueiro')
+
+insert into clube(IDClube, Nome, Divisao)
+values(1, 'Corinthians', 'A')
+insert into clube(IDClube, Nome, Divisao)
+values(2, 'Santos', 'A')
+insert into clube(IDClube, Nome, Divisao)
+values(3, 'São Paulo', 'B')
+
+insert into Jogador
+values('12345687452', 'Jose', 1, 1)
+
+insert into Jogador
+values('12345687999', 'Manuel', 3, 2)
